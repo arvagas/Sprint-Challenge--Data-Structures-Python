@@ -13,24 +13,37 @@ f.close()
 
 duplicates = []
 
+# ORIGINAL
 # time complexity of O(n^2)
 # runtime: 7.152942180633545 seconds
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
-
+# ===================================================
+# MVP
 # runtime: 0.13579988479614258 seconds
-bst = BinarySearchTree(names_1[0])
+# bst = BinarySearchTree(names_1[0])
 
-for i in range(1, len(names_1) - 1):
-    current_name = names_1[i]
-    bst.insert(current_name)
+# for i in range(1, len(names_1) - 1):
+#     current_name = names_1[i]
+#     bst.insert(current_name)
 
-for i in range(0, len(names_2)-1):
-    current_name = names_2[i]
-    if bst.contains(current_name):
-        duplicates.append(current_name)
+# for i in range(0, len(names_2)-1):
+#     current_name = names_2[i]
+#     if bst.contains(current_name):
+#         duplicates.append(current_name)
+# ===================================================
+# STRETCH GOAL
+# runtime: 0.011246442794799805 seconds
+names = dict()
+
+for i in names_1:
+    names[i] = i
+
+for i in names_2:
+    if i in names:
+        duplicates.append(i)
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
